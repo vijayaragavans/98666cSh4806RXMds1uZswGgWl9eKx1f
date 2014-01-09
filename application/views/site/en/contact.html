@@ -1,0 +1,169 @@
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDnh6vs9kYHkkDmv5y8iXRPg8I0ZGKEx2E&amp;sensor=false"></script>
+														
+<script>
+{literal}
+function initialize() {
+  var myLatlng = new google.maps.LatLng(12.921342,77.684391);
+  var mapOptions = {
+    zoom: 14,
+    center: myLatlng
+  }
+  var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hai Interactive'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+{/literal}
+	
+</script>
+
+
+
+	<div id="headline" class="container">
+	<div class="row-fluid">
+		
+	{foreach from=$top4_games item=top_four key=i}
+		<div class="span3">
+			<article class="post">
+				<a href="{$base_url}game/play/{$top_four.game_id}/{$top_four.game_ascii_title}" title="{$top_four.game_title}" rel="bookmark">
+				<img width="225" height="136" src="{$top_four.game_image_url}" class="thumb" alt="{$top_four.game_ascii_title}" />
+				</a>
+				<div class="entry">
+					<h3><a href="{$base_url}game/play/{$top_four.game_id}/{$top_four.game_ascii_title}" title="{$top_four.game_title}" rel="bookmark">{$top_four.game_title}</a></h3>
+					<p>{$top_four.game_updated_on|date_format}</p>
+				</div>
+				<div class="clearfix"></div>
+			</article>
+		</div>
+	{/foreach}	
+
+		
+	</div>
+	</div>
+
+	<div id="intr" class="container">
+		<div class="row-fluid">
+
+		<div class="search span3"><div class="offset1">
+			<form method="get" id="searchform" action="#">
+				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'Search here...'; }" name="s" id="s" />
+				<input type="submit" id="searchsubmit" value="Search" /></p>
+			</form>
+		</div></div>
+		</div>
+	</div>
+
+	<div id="content" class="container">
+
+		<div id="main" class="row-fluid">
+			<div id="main-left" class="span8">
+			
+			<article id="post-206" class="post-206 page type-page status-publish hentry instock">
+				<header class="entry-header">
+					<h1 class="entry-title"><span>Contact</span></h1>
+				</header><!-- .entry-header -->
+				
+				<div id="googleMap" style="width:100%;height:400px;"></div><br />
+				
+				<form class="contact-form" action="{$base_url}home/contact" method="post">
+					<div style="color: green; font-weight: bold;">{$success}</div>
+					<div class="cform name">
+						<input type="text" name="cf_name" id="cf_name" size="50" maxlength="50" value="" placeholder="Your Name" />
+					</div>
+					<div class="cform email">
+						<input type="text" name="cf_email" id="cf_email" size="50" maxlength="50" value="" placeholder="Your E-mail Address" />
+					</div>
+					<div class="cform website">
+						<input type="text" name="cf_subject" id="cf_subject" size="50" maxlength="50" value="" placeholder="Subject" />
+					</div>
+
+					<div class="clearfix"></div>
+
+					<div>
+						<textarea name="cf_message" id="cf_message" cols="50" rows="3" placeholder="Your Message"></textarea>
+					</div>
+					<div>
+						<input type="submit" value="Submit" name="send" id="cf_send" />
+					</div>
+				</form>
+			</article>
+	
+			</div><!-- #main-left -->
+
+		<div id="sidebar" class="span4">
+
+			<div id="tabwidget" class="widget tab-container"> 
+				<ul id="tabnav" class="clearfix"> 
+					<li><h3><a href="#tab1" class="selected"><img src="images/view-white-bg.png" alt="Popular"></a></h3></li>
+					<li><h3><a href="#tab2"><img src="images/time-white.png" alt="Recent"></a></h3></li>
+				    <li><h3><a href="#tab3"><img src="images/komen-putih.png" alt="Comments"></a></h3></li>
+				</ul> 
+
+			<div id="tab-content">
+			
+	 		<div id="tab1" style="display: block; ">
+				<ul id="itemContainer" class="recent-tab">
+				{foreach from=$popular_games item=popular key=i}
+					<li>
+						<a href="{$base_url}game/play/{$popular.game_id}/{$popular.game_ascii_title}"><img width="225" height="136" src="{$popular.game_image_url}" class="thumb" alt="shutterstock_58382248" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$popular.game_id}/{$popular.game_ascii_title}">{$popular.game_title}</a></h4>
+						<p>{$popular.game_description|truncate:120:"...":true:true}</p>
+						<div class="clearfix"></div>				
+					</li>
+				{/foreach}	
+
+				</ul>
+				
+				<div class="holder clearfix"></div>
+				<div class="clear"></div>
+
+			<!-- End most viewed post -->		  
+
+			</div><!-- /#tab1 -->
+ 
+			<div id="tab2" style="display: none;">	
+				<ul id="itemContainer2" class="recent-tab">
+				
+				{foreach from=$recent_games item=recent key=i}
+					<li>
+						<a href="{$base_url}game/play/{$recent.game_id}/{$recent.game_ascii_title}"><img width="225" height="136" src="{$recent.game_image_url}" class="thumb" alt="{$recent.game_ascii_title}" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$recent.game_id}/{$recent.game_ascii_title}">{$recent.game_title}</a></h4>
+						<p>{$recent.game_description|truncate:120:"..."}</p>
+						<div class="clearfix"></div>	
+					</li>
+				{/foreach}	
+
+				</ul> 	 
+			</div><!-- /#tab2 --> 
+
+			<div id="tab3" style="display: none; ">
+				<ul>
+				{foreach from=$hot_games item=hot key=i}
+					<li>
+						<a href="{$base_url}game/play/{$hot.game_id}/{$hot.game_ascii_title}"><img width="225" height="136" src="{$hot.game_image_url}" class="thumb" alt="{$hot.game_ascii_title}" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$hot.game_id}/{$hot.game_ascii_title}">{$hot.game_title}</a></h4>
+						<p>{$hot.game_description|truncate:120:"..."}</p>
+						<div class="clearfix"></div>	
+					</li>
+				{/foreach}	
+				</ul>
+			</div><!-- /#tab2 --> 
+	
+			</div><!-- /#tab-content -->
+
+			</div><!-- /#tab-widget --> 
+
+		</div><!-- sidebar -->
+		
+		<div class="clearfix"></div>
+
+		</div><!-- #main -->
+
+		</div><!-- #content -->
+

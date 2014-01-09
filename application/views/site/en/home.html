@@ -1,0 +1,265 @@
+	<div id="headline" class="container">
+	<div class="row-fluid">
+
+	{foreach from=$top4_games item=top_four key=i}
+		<div class="span3">
+			<article class="post">
+				<a href="{$base_url}game/play/{$top_four.game_id}/{$top_four.game_ascii_title}" title="{$top_four.game_title}" rel="bookmark">
+				<img width="225" height="136" src="{$top_four.game_image_url}" class="thumb" alt="{$top_four.game_ascii_title}" />
+				</a>
+				<div class="entry">
+					<h3><a href="{$base_url}game/play/{$top_four.game_id}/{$top_four.game_ascii_title}" title="{$top_four.game_title}" rel="bookmark">{$top_four.game_title}</a></h3>
+					<p>{$top_four.game_updated_on|date_format}</p>
+				</div>
+				<div class="clearfix"></div>
+			</article>
+		</div>
+	{/foreach}	
+
+	</div>
+	</div>
+
+	<div id="intr" class="container">
+		<div class="row-fluid">
+		
+		<div class="search span3"><div class="offset1">
+			<form method="get" id="searchform" action="#">
+				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'Search here...'; }" name="s" id="s" />
+				<input type="submit" id="searchsubmit" value="Search" /></p>
+			</form>
+		</div></div>
+		</div>
+	</div>
+
+	<div id="content" class="container">
+
+		<div id="main" class="row-fluid">
+			<div id="main-left" class="span8">
+				<div id="slider" class="clearfix">
+					<div id="slide-left" class="flexslider span14">
+
+						<div id="leaderboard_bridge"></div>
+						<div>
+							{$main_game.game_embed}
+						</div>
+						<script src="http://xs.mochiads.com/static/pub/swf/leaderboard.js" type="text/javascript"></script>
+						<script type="text/javascript">
+						// Mochi Bridge
+						var options = {partnerID: "5c948a3e78939abe", id: "leaderboard_bridge"};
+						// optional
+						options.siteName = "Hiiku.com";
+						// optional
+						options.callback = function (params) { alert(params.name + " (" + params.username + ") just scored " + params.score + "!"); }
+						Mochi.addLeaderboardIntegration(options);
+						</script>
+					</div>
+
+				</div>
+				
+				<div id="home-top">
+					<h3 class="title"><span>Casino</span></h3>
+					<ul class="bxslider">
+					
+					{foreach from=$casino_games item=casino key=i}
+						<li><a class="image_thumb_zoom" href="{$base_url}game/play/{$casino.game_id}/{$casino.game_ascii_title}" title="{$casino.game_title}" rel="bookmark">
+							<img width="225" height="136" src="{$casino.game_image_url}" alt="{$casino.game_ascii_title}" />
+							</a>
+							<h4 class="post-title clearfix">
+								<img class="post-icon" alt="Text post" src="{$static_server}files/ugc/images/text.png">
+								<a href="{$base_url}game/play/{$casino.game_id}/{$casino.game_ascii_title}" title="Permalink to Donec consectetuer ligula vulputate sem tristique cursus" rel="bookmark">{$casino.game_title}</a>
+							</h4>
+							<div class="meta clearfix">
+								<span class="date">{$casino.game_published_on|date_format}</span>
+							</div>
+						</li>
+					{/foreach}
+					</ul>
+				</div>
+				
+				<div id="home-middle" class="clearfix">
+					<div class="left span6">
+						<h3 class="title"><a href="{$base_url}game/category/Fighting" title="Fighting"><span>Fighting</span></a></h3>
+						<div class="row-fluid">	
+
+							<article class="post">
+								<div class="entry clearfix">
+									<a href="{$base_url}game/play/{$left_game.game_id}/{$left_game.game_ascii_title}" title="{$left_game.game_title}" rel="bookmark">
+									<img width="225" height="136" src="{$left_game.game_image_url}" class="thumb" alt="{$left_game.game_ascii_title}" />
+									<h4 class="post-title">{$left_game.game_title}</h4>
+									</a>
+									<p>{$left_game.game_description|truncate:150:"...":true:true}</p>
+									<div class="meta">
+										<span class="date">{$left_game.game_updated_on|date_format}</span>
+									</div>
+								</div>
+							</article>
+
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<div class="right span6">
+						<h3 class="title"><a href="{$base_url}game/category/adventure" title="Sport News"><span>Adventure</span></a></h3>
+							<div class="row-fluid">
+
+							{foreach from=$adventures_games item=adventure key=i}
+
+								<article class="post">
+									<div class="entry clearfix">
+										<a href="{$base_url}game/play/{$adventure.game_id}/{$adventure.game_ascii_title}" title="{$adventure.gmae_title}" rel="bookmark">
+										<img width="225" height="136" src="{$adventure.game_image_url}" class="thumb wp-post-image" alt="{$adventure.game_ascii_title}" />
+										<h4 class="post-title">{$adventure.game_title}</h4>
+										</a>
+										<p>{$adventure.game_description|truncate:150:"...":true:true}</p>
+										<div class="meta">
+											<span class="date">{$adventure.game_published_on|date_format}</span>
+										</div>
+									</div>
+								</article>
+							{/foreach}
+								<div class="clearfix"></div>
+
+							</div>
+					</div>
+
+				</div>
+
+				<div id="home-bottom" class="clearfix">
+					<h3 class="title"><a href="#" title="Fashion News"><span>Advertisment</span></a></h3>	
+					<div class="row-fluid">	
+						<div class="span6">
+							<!-- Tags Code For https://gloadmarket.com -->  
+								<script src="http://insert.gloadmarket.com/core/ads.php?SI=691&TYPE=banner&SIZE=1" type="text/javascript"></script> 
+							<!-- End Tags -->
+						</div>
+
+						<div class="span6">
+						{foreach from=$rhythm_games item=rhythm key=i}
+						
+							<article class="post">
+								<div class="entry clearfix">
+									<a href="{$base_url}game/play/{$rhythm.game_id}/{$rhythm.game_ascii_title}" title="{$rhythm.game_title}" rel="bookmark">
+									<img width="225" height="136" src="{$rhythm.game_image_url}" class="thumb" alt="{$rhythm.game_ascii_title}" />
+									<h4 class="post-title">{$rhythm.game_title}</h4>
+									</a>
+									<p>{$rhythm.game_description|truncate:150:"...":true:true}</p>
+									<div class="meta">
+										<span class="date">{$rhythm.game_published_on|date_format}</span>
+									</div>
+								</div>
+							</article>
+
+						{/foreach}
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+
+			</div><!-- #main-left -->
+
+		<div id="sidebar" class="span4">
+		
+			<div>
+			</div>
+
+			<div id="tabwidget" class="widget tab-container"> 
+				<ul id="tabnav" class="clearfix"> 
+					<li><h3><a href="#tab1" class="selected"><img src="{$static_server}files/ugc/images/view-white-bg.png" alt="Popular">Popular</a></h3></li>
+					<li><h3><a href="#tab2"><img src="{$static_server}files/ugc/images/time-white.png" alt="Recent">Recent</a></h3></li>
+				    <li><h3><a href="#tab3"><img src="{$static_server}files/ugc/images/komen-putih.png" alt="Comments">Hot</a></h3></li>
+				</ul> 
+
+			<div id="tab-content">
+			
+	 		<div id="tab1" style="display: block; ">
+				<ul id="itemContainer" class="recent-tab">
+
+				{foreach from=$popular_games item=popular key=i}
+					<li>
+						<a href="{$base_url}game/play/{$popular.game_id}/{$popular.game_ascii_title}"><img width="225" height="136" src="{$popular.game_image_url}" class="thumb" alt="shutterstock_58382248" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$popular.game_id}/{$popular.game_ascii_title}">{$popular.game_title}</a></h4>
+						<p>{$popular.game_description|truncate:120:"...":true:true}</p>
+						<div class="clearfix"></div>				
+					</li>
+				{/foreach}	
+								
+				</ul>
+				
+				<div class="holder clearfix"></div>
+				<div class="clear"></div>
+
+			<!-- End most viewed post -->		  
+
+			</div><!-- /#tab1 -->
+ 
+			<div id="tab2" style="display: none;">	
+				<ul id="itemContainer2" class="recent-tab">
+
+				{foreach from=$recent_games item=recent key=i}
+					<li>
+						<a href="{$base_url}game/play/{$recent.game_id}/{$recent.game_ascii_title}"><img width="225" height="136" src="{$recent.game_image_url}" class="thumb" alt="{$recent.game_ascii_title}" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$recent.game_id}/{$recent.game_ascii_title}">{$recent.game_title}</a></h4>
+						<p>{$recent.game_description|truncate:120:"..."}</p>
+						<div class="clearfix"></div>	
+					</li>
+				{/foreach}	
+				</ul> 	 
+			</div><!-- /#tab2 --> 
+
+			<div id="tab3" style="display: none; ">
+				<ul id="itemContainer2" class="recent-tab">
+				{foreach from=$hot_games item=hot key=i}
+					<li>
+						<a href="{$base_url}game/play/{$hot.game_id}/{$hot.game_ascii_title}"><img width="225" height="136" src="{$hot.game_image_url}" class="thumb" alt="{$hot.game_ascii_title}" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$hot.game_id}/{$hot.game_ascii_title}">{$hot.game_title}</a></h4>
+						<p>{$hot.game_description|truncate:120:"..."}</p>
+						<div class="clearfix"></div>	
+					</li>
+				{/foreach}	
+				</ul>
+			</div><!-- /#tab2 --> 
+	
+			</div><!-- /#tab-content -->
+
+			</div><!-- /#tab-widget --> 
+
+			<div class="widget widget_latestpost">
+				<h3 class="title"><span>Advertisment</span></h3>
+				<div class="latest-posts widget">
+					<!-- Tags Code For https://gloadmarket.com -->  
+						<script src="http://insert.gloadmarket.com/core/ads.php?SI=691&TYPE=banner&SIZE=1" type="text/javascript"></script> 
+					<!-- End Tags -->
+					
+					{foreach from=$education_games item=education key=i}
+					<div class="latest-post clearfix">
+						<a href="{$base_url}game/play/{$education.game_id}/{$education.game_ascii_title}"><img width="225" height="136" src="{$education.game_image_url}" class="thumb fl" alt="{$education.game_ascii_title}" title="" /></a>
+						<h4><a href="#" rel="bookmark" title="Suspen disse auctor dapibus neque pulvinar urna leo">{$education.game_title}</a></h4>
+						<div class="post-time">{$education.game_published_on|date_format}</div>
+					</div>
+					{/foreach}
+
+
+				</div>
+			</div>
+
+			<div class="widget widget_latestpost"><h3 class="title"><span>Advertisment</span></h3>
+				<div class="latest-posts">
+				
+					<article class="post">
+						<!-- Tags Code For https://gloadmarket.com -->  
+							<script src="http://insert.gloadmarket.com/core/ads.php?SI=691&TYPE=banner&SIZE=1" type="text/javascript"></script> 
+						<!-- End Tags -->
+					</article>
+
+				</div>
+			</div>
+			
+        				
+		</div><!-- sidebar -->
+		
+		<div class="clearfix"></div>
+
+
+		</div><!-- #main -->
+
+		</div><!-- #content -->

@@ -1,0 +1,133 @@
+
+	<div id="headline" class="container">
+	<div class="row-fluid">
+		
+	{foreach from=$shooting_games item=shooting key=i}
+		<div class="span3">
+			<article class="post">
+				<a href="{$base_url}game/play/{$shooting.game_id}/{$shooting.game_ascii_title}" title="{$shooting.game_title}" rel="bookmark">
+				<img width="225" height="136" src="{$shooting.game_image_url}" class="thumb" alt="{$shooting.game_ascii_title}" />
+				</a>
+				<div class="entry">
+					<h3><a href="{$base_url}game/play/{$shooting.game_id}/{$shooting.game_ascii_title}" title="{$shooting.game_title}" rel="bookmark">{$shooting.game_title}</a></h3>
+					<p>{$shooting.game_published_on|date_format}</p>
+				</div>
+				<div class="clearfix"></div>
+			</article>
+		</div>
+	{/foreach}	
+		
+	</div>
+	</div>
+
+	<div id="intr" class="container">
+		<div class="row-fluid">
+		
+		<div class="search span3"><div class="offset1">
+			<form method="get" id="searchform" action="#">
+				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'Search here...'; }" name="s" id="s" />
+				<input type="submit" id="searchsubmit" value="Search" /></p>
+			</form>
+		</div></div>
+		</div>
+	</div>
+
+	<div id="content" class="container">
+
+		<div id="main" class="row-fluid">
+			<div id="main-left" class="span8">
+			
+				<article class="post">
+					<h2 class="entry-title">
+						<span class="the_title">{$game.game_title}</span>
+						<span class="entry-cat"><a href="#" title="{$game.game_title}" rel="category tag">Game News</a></span>
+					</h2>
+					<div class="entry-meta row-fluid">
+						<ul class="clearfix">
+							<li><img src="images/time.png" alt="">{$game.game_published_on|date_format}</li>
+							<li><img src="images/view-bg.png" alt="">{$game.game_keyword}</li>
+							<li>{$game.game_categories}</li>
+						</ul>
+					</div>
+					<div class="entry-content">
+						<p>{$game.game_embed}</p>
+						<p>{$game.game_description}</p>
+					</div>
+				</article>
+			
+			</div><!-- #main-left -->
+
+		<div id="sidebar" class="span4">
+
+			<div id="tabwidget" class="widget tab-container"> 
+				<ul id="tabnav" class="clearfix"> 
+					<li><h3><a href="#tab1" class="selected"><img src="images/view-white-bg.png" alt="Popular"></a></h3></li>
+					<li><h3><a href="#tab2"><img src="images/time-white.png" alt="Recent"></a></h3></li>
+				    <li><h3><a href="#tab3"><img src="images/komen-putih.png" alt="Comments"></a></h3></li>
+				</ul> 
+
+
+			<div id="tab-content">
+			
+	 		<div id="tab1" style="display: block; ">
+				<ul id="itemContainer" class="recent-tab">
+
+				{foreach from=$popular_games item=popular key=i}
+					<li>
+						<a href="{$base_url}game/play/{$popular.game_id}/{$popular.game_ascii_title}"><img width="225" height="136" src="{$popular.game_image_url}" class="thumb" alt="shutterstock_58382248" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$popular.game_id}/{$popular.game_ascii_title}">{$popular.game_title}</a></h4>
+						<p>{$popular.game_description|truncate:120:"...":true:true}</p>
+						<div class="clearfix"></div>				
+					</li>
+				{/foreach}	
+								
+				</ul>
+				
+				<div class="holder clearfix"></div>
+				<div class="clear"></div>
+
+			<!-- End most viewed post -->		  
+
+			</div><!-- /#tab1 -->
+ 
+			<div id="tab2" style="display: none;">	
+				<ul id="itemContainer2" class="recent-tab">
+
+				{foreach from=$recent_games item=recent key=i}
+					<li>
+						<a href="{$base_url}game/play/{$recent.game_id}/{$recent.game_ascii_title}"><img width="225" height="136" src="{$recent.game_image_url}" class="thumb" alt="{$recent.game_ascii_title}" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$recent.game_id}/{$recent.game_ascii_title}">{$recent.game_title}</a></h4>
+						<p>{$recent.game_description|truncate:120:"..."}</p>
+						<div class="clearfix"></div>	
+					</li>
+				{/foreach}	
+				</ul> 	 
+			</div><!-- /#tab2 --> 
+
+			<div id="tab3" style="display: none; ">
+				<ul id="itemContainer2" class="recent-tab">
+				{foreach from=$hot_games item=hot key=i}
+					<li>
+						<a href="{$base_url}game/play/{$hot.game_id}/{$hot.game_ascii_title}"><img width="225" height="136" src="{$hot.game_image_url}" class="thumb" alt="{$hot.game_ascii_title}" /></a>
+						<h4 class="post-title"><a href="{$base_url}game/play/{$hot.game_id}/{$hot.game_ascii_title}">{$hot.game_title}</a></h4>
+						<p>{$hot.game_description|truncate:120:"..."}</p>
+						<div class="clearfix"></div>	
+					</li>
+				{/foreach}	
+				</ul>
+			</div><!-- /#tab2 --> 
+	
+			</div><!-- /#tab-content -->
+
+
+			</div><!-- /#tab-widget --> 
+
+        				
+		</div><!-- sidebar -->
+		
+		<div class="clearfix"></div>
+
+		</div><!-- #main -->
+
+		</div><!-- #content -->
+

@@ -1,0 +1,70 @@
+
+	<div id="headline" class="container">
+	<div class="row-fluid">
+	{foreach from=$category_games item=category key=i}
+	  {if $i <= 3 }
+		<div class="span3">
+			<article class="post">
+				<a href="{$base_url}game/play/{$category.game_id}/{$category.game_ascii_title}" title="{$category.game_title}" rel="bookmark">
+				<img width="225" height="136" src="{$category.game_image_url}" class="thumb" alt="{$category.game_ascii_title}" />
+				</a>
+				<div class="entry">
+					<h3><a href="{$base_url}game/play/{$category.game_id}/{$category.game_ascii_title}" title="{$category.game_ascii_title}" rel="bookmark">{$category.game_title}</a></h3>
+					<p>{$category.game_published_on|date_format}</p>
+				</div>
+				<div class="clearfix"></div>
+			</article>
+		</div>
+	  {/if}	
+	{/foreach}
+
+	</div>
+	</div>
+
+	<div id="intr" class="container">
+		<div class="row-fluid">
+		
+		<div class="search span3"><div class="offset1">
+			<form method="get" id="searchform" action="#">
+				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'Search here...'; }" name="s" id="s" />
+				<input type="submit" id="searchsubmit" value="Search" /></p>
+			</form>
+		</div></div>
+		</div>
+	</div>
+
+	<div id="content" class="container">
+
+		<div id="main" class="row-fluid">
+
+	<header class="entry-header">
+		<h1 class="entry-title"><span>{$name}</span></h1>
+	</header><!-- .entry-header -->
+		
+					
+		<div class="row-fluid">
+		{foreach from=$category_games item=category key=i}
+	      {if $i > 3}
+			<div class="kontengal4 span3">
+				<article class="galleries">
+					<a href="{$base_url}game/play/{$category.game_id}/{$category.game_ascii_title}" title="{$category.game_ascii_title}" rel="prettyPhoto"><img width="570" height="360" src="{$category.game_image_url}" alt="{$category.game_ascii_title}" /></a>
+					<h3 class="gal-title"><a href="{$base_url}game/play/{$category.game_id}/{$category.game_ascii_title}" title="{$category.game_title}" rel="bookmark">{$category.game_title}</a></h3>
+				</article>
+			</div>
+		  {/if}
+		{/foreach}	
+		 
+		</div>
+		
+			<div class="clearfix"></div>
+					<div>
+						{if $next > 1}
+						<a href="{$req_uri}/{$prev}" class='next'>Prev</a>
+						<span>&nbsp;&nbsp;</span>
+						{/if}
+						<a href="{$req_uri}/{$next}" class='next' style="text-align: right;">Next</a>
+					</div><br/>
+		</div><!-- #main -->
+
+	</div><!-- #content -->
+
