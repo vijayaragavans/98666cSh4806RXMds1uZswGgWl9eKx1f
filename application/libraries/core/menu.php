@@ -36,16 +36,31 @@ class Menu
         $this->_CI->load->helper('url');        
 		$menus= $this->_CI->config->item('menus');
 		$finalMenu = array();		
+		
+		$fb = 'http://api.facebook.com/restserver.php?method=links.getStats&urls=https://www.facebook.com/CoreIndiaToday';
+		
+        $xml = file_get_contents($fb);
+		
+        $homepage = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
+        $xmsl = simplexml_load_string($xml,'SimpleXMLElement', LIBXML_NOCDATA);
+		
+		$this->_CI->mysmarty->assign('fb_count', $xmsl->link_stat->like_count);
+		
+    	$twit_followers = file_get_contents("https://cdn.api.twitter.com/1/users/lookup.json?screen_name=HaiInteractive");
+    	$twit_followers = json_decode($twit_followers, true);
+    	
+		$this->_CI->mysmarty->assign('twit_count', $twit_followers[0]);
+		
     	$userdata = $this->_CI->session->userdata('user');
         $this->_CI->mysmarty->assign('base_url',base_url()."");
         $sessionUserdata = $this->_CI->session->userdata('RIGHT');
         $this->_CI->mysmarty->assign('sess',$sessionUserdata);
         define('SITE_URL', base_url()."");
-         $this->_CI->mysmarty->assign('static_server',base_url());
-		 $this->_CI->mysmarty->assign('menus',$finalMenu);
+        $this->_CI->mysmarty->assign('static_server',base_url());
+		$this->_CI->mysmarty->assign('menus',$finalMenu);
          
     }
- 
-        
+    
+	        
 }
 /* End of file menu.php */

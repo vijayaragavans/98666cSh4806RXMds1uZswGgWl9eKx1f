@@ -69,8 +69,6 @@ class Home extends CI_Controller {
 		$rhythm_games = $this->games_api->Game_Feed('1', 'Rhythm', 3);
 		
 		$filename = 'site/'.SITE_LANG.'/home.html' ;
-		$fb_count = $this->fb();
-		$this->mysmarty->assign('fb_count', $fb_count);
 		
         $this->mysmarty->assign('main_game', $main_game[0]);
         $this->mysmarty->assign('top4_games', $top4_games);
@@ -106,6 +104,7 @@ class Home extends CI_Controller {
 		$cf_subject = $this->security->xss_clean( $this->input->get_post('cf_subject') );
 		
 		$cf_message = $this->security->xss_clean( $this->input->get_post('cf_message') );
+
 		
 		if(isset($cf_name{3}) )
 		{
@@ -120,8 +119,6 @@ class Home extends CI_Controller {
 		
 		$filename = 'site/'.SITE_LANG.'/contact.html' ;
 		
-		$fb_count = $this->fb();
-		$this->mysmarty->assign('fb_count', $fb_count);
         $this->mysmarty->assign('popular_games', $popular_games);
         $this->mysmarty->assign('recent_games', $recent_games);
         $this->mysmarty->assign('hot_games', $hot_games);
@@ -131,20 +128,6 @@ class Home extends CI_Controller {
 	}
 	
 	
-	
-	public function fb()
-	{
-	
-		$fb = 'http://api.facebook.com/restserver.php?method=links.getStats&urls=https://www.facebook.com/CoreIndiaToday';
-		
-        $xml = file_get_contents($fb);
-		
-        $homepage = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
-        $xmsl = simplexml_load_string($xml,'SimpleXMLElement', LIBXML_NOCDATA);
-
-        return $xmsl->link_stat->like_count;
-        //$this->mysmarty->assign('fb_count', $xmsl->link_stat->like_count);
-	}
 }
 
 /* End of file home.php */
