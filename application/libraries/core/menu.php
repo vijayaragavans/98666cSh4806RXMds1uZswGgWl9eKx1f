@@ -27,6 +27,7 @@ class Menu
     public function __construct($init = false)
     {
     
+    	error_reporting(0);
         // take advantage of codeigniter libraries
         // use $this->_CI in place of normal codeigniter $this
         $this->_CI = & get_instance();
