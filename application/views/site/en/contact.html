@@ -51,8 +51,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<div class="row-fluid">
 
 		<div class="search span3"><div class="offset1">
-			<form method="get" id="searchform" action="#">
-				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) { this.value = ''; }" onblur="if ( this.value == '' ) { this.value = 'Search here...'; }" name="s" id="s" />
+			<form method="get" id="searchform" action="{$base_url}home/search/">
+				<p><input type="text" placeholder="Search here..." name="key" id="key" />
 				<input type="submit" id="searchsubmit" value="Search" /></p>
 			</form>
 		</div></div>

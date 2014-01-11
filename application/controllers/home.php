@@ -128,6 +128,20 @@ class Home extends CI_Controller {
 	}
 	
 	
+	public function search( )
+	{
+	
+        $keyword =  $this->security->xss_clean( $this->input->get("key"));
+        $related = $this->games_api->Find_Games( 20, $keyword );
+		$top4_games = $this->games_api->Game_Feed('1', 'Driving', 4);
+        
+		$filename = 'site/'.SITE_LANG.'/search.html' ;
+		
+		$this->mysmarty->assign('top4_games', $top4_games);
+		$this->mysmarty->assign('category_games', $related);
+	    $this->mysmarty->assign('filename', $filename);
+        $this->mysmarty->display('site/home.html'); 
+	}
 }
 
 /* End of file home.php */

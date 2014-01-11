@@ -87,4 +87,15 @@ class Games_api
     }
     
     
+    public function Find_Games( $count, $keyword )
+    {
+    	$response = false;
+    
+    	$response = $this->_CI->games_api_model->Find_Games( $count, $keyword );    
+    	
+    	return $response;		
+    
+    }
+    
+    
 }

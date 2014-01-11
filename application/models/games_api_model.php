@@ -86,6 +86,28 @@ class Games_Api_Model extends CI_Model
 	 	return $this->db->insert_id(); 
        
     }
+    
+    
+    function Find_Games( $count, $keyword )
+    {
+    
+		$sqls = "CALL Find_Games('".$keyword."', $count )";
+		
+		$qresult=$this->db->query($sqls);
+		
+    	mysqli_next_result($this->db->conn_id);
+    	
+		$db_results = $qresult->result_array();
+		
+		 if (count($db_results) > 0 )
+        {            
+
+        	return $db_results;
+
+        } else {            
+        	 return 'ER';
+        } 
+    }
 }
 /* End of file users_model.php */
 ?>
