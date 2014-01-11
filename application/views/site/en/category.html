@@ -43,16 +43,22 @@
 		
 					
 		<div class="row-fluid">
+			<section id="grid" class="grid clearfix" >
 		{foreach from=$category_games item=category key=i}
 	      {if $i > 3}
-			<div class="kontengal4 span3">
-				<article class="galleries">
-					<a href="{$base_url}game/play/{$category.game_id}/{$category.game_ascii_title}" title="{$category.game_ascii_title}" rel="prettyPhoto"><img width="570" height="360" src="{$category.game_image_url}" alt="{$category.game_ascii_title}" /></a>
-					<h3 class="gal-title"><a href="{$base_url}game/play/{$category.game_id}/{$category.game_ascii_title}" title="{$category.game_title}" rel="bookmark">{$category.game_title}</a></h3>
-				</article>
-			</div>
+				<a href="{$base_url}game/play/{$category.game_id}/{$category.game_ascii_title}" data-path-hover="m 0,0 0,47.7775 c 24.580441,3.12569 55.897012,-8.199417 90,-8.199417 34.10299,0 65.41956,11.325107 90,8.199417 L 180,0 z" title="{$category.game_ascii_title}" style="border: 1px;" >
+					<figure>
+						<img src="{$category.game_image_url}" alt="{$category.game_ascii_title}" />
+						<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="m 0,0 0,171.14385 c 24.580441,15.47138 55.897012,24.75772 90,24.75772 34.10299,0 65.41956,-9.28634 90,-24.75772 L 180,0 0,0 z"/></svg>
+						<figcaption>
+							<h2>{$category.game_title}</h2>
+							<p>{$category.game_description|truncate:60:"...":true:true}</p>
+						</figcaption>
+					</figure>
+				</a>
 		  {/if}
-		{/foreach}	
+		{/foreach}
+			</section>
 		 
 		</div>
 		

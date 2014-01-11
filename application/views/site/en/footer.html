@@ -14,9 +14,43 @@
 	<script type='text/javascript' src='{$static_server}files/ugc/js/jquery.sidr.min.js'></script>
 	<script type='text/javascript' src='{$static_server}files/ugc/js/jquery.touchSwipe.min.js'></script>
 	<script type='text/javascript' src='{$static_server}files/ugc/js/custom.js'></script>
+	<link rel="stylesheet" type="text/css" href="{$static_server}files/ugc/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="{$static_server}files/ugc/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="{$static_server}files/ugc/css/component.css" />
+	<script src="{$static_server}files/ugc/js/snap.svg-min.js"></script>
 
 
 {literal}
+		<script>
+			(function() {
+	
+				function init() {
+					var speed = 330,
+						easing = mina.backout;
+
+					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+							pathConfig = {
+								from : path.attr( 'd' ),
+								to : el.getAttribute( 'data-path-hover' )
+							};
+
+						el.addEventListener( 'mouseenter', function() {
+							path.animate( { 'path' : pathConfig.to }, speed, easing );
+						} );
+
+						el.addEventListener( 'mouseleave', function() {
+							path.animate( { 'path' : pathConfig.from }, speed, easing );
+						} );
+					} );
+				}
+
+				init();
+
+			})();
+		</script>
+
+
 <!-- AddThis Smart Layers BEGIN -->
 <!-- Go to http://www.addthis.com/get/smart-layers to customize -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52a8c673432ef3e7"></script>
