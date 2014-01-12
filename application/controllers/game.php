@@ -81,8 +81,6 @@ class Game extends CI_Controller {
 		$category_games = $this->games_api->Category_Feed( $starts, 20, $category_name );
 		
 		$filename = 'site/'.SITE_LANG.'/category.html' ;
-		$fb_count = $this->fb();
-		$this->mysmarty->assign('fb_count', $fb_count);
 		
         $this->mysmarty->assign('req_uri', $req_uri);
 	    $this->mysmarty->assign('next', $next);
@@ -109,8 +107,6 @@ class Game extends CI_Controller {
 		
 		$filename = 'site/'.SITE_LANG.'/play.html' ;
 		
-		$fb_count = $this->fb();
-		$this->mysmarty->assign('fb_count', $fb_count);
 		$this->mysmarty->assign('hot_games', $hot_games);
 		$this->mysmarty->assign('recent_games', $recent_games);
 		$this->mysmarty->assign('popular_games', $popular_games);
@@ -120,19 +116,6 @@ class Game extends CI_Controller {
         $this->mysmarty->display('site/home.html'); 	
 	}
 	
-	public function fb()
-	{
-	
-		$fb = 'http://api.facebook.com/restserver.php?method=links.getStats&urls=https://www.facebook.com/CoreIndiaToday';
-		
-        $xml = file_get_contents($fb);
-		
-        $homepage = preg_replace("/(<\/?)(\w+):([^>]*>)/", "$1$2$3", $xml);
-        $xmsl = simplexml_load_string($xml,'SimpleXMLElement', LIBXML_NOCDATA);
-
-        return $xmsl->link_stat->like_count;
-        //$this->mysmarty->assign('fb_count', $xmsl->link_stat->like_count);
-	}
 }
 
 /* End of file home.php */
