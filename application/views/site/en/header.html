@@ -15,7 +15,12 @@
 		<meta property="article:section" content="" />			
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:creator" content="@vijayaragavans" />
-		<meta property="og:description" content="" />
+		
+		{if $game}
+			<meta property="og:image" content="{$game.game_image_url}" />
+			<meta property="og:title" content="{$game.game_title}" />
+			<meta property="og:description" content="{$game.game_description}" />
+		{/if}
 		<meta name="verifyownership" content="7d1481c31ac7abe693dc0c3fc294b690" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<!-- Favicon -->
