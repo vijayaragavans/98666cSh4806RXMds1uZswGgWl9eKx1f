@@ -43,21 +43,20 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-define('TOOL_DB_NAME', 'hiiku_games');
+define('TOOL_DB_NAME', 'rightern_hiiku');
 //define('TOOL_DB_NAME', 'rightern_hiiku');
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost'; 
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'hiiku_games'; 
+/*$db['default']['hostname'] = '118.139.168.58'; 
+$db['default']['username'] = 'rightmain';
+$db['default']['password'] = 'M@nster88';
+$db['default']['database'] = 'rightmain'; */
 
-/*$db['default']['hostname'] = 'localhost'; 
+$db['default']['hostname'] = 'localhost'; 
 $db['default']['username'] = 'rightern_news';
 $db['default']['password'] = 'M0nster.com';
 $db['default']['database'] = 'rightern_hiiku';
-*/
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
