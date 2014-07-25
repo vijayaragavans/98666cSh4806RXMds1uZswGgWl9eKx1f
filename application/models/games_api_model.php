@@ -12,28 +12,19 @@
  
 class Games_Api_Model extends CI_Model
 {
- 
-	 public $_dataMap = ''; 
-	 
-    function Game_Feed( $provider, $category, $limit )
+ 	 public $_dataMap = ''; 
+   function Game_Feed( $provider, $category, $limit )
     {
-    
 		$sqls = 'CALL Games_Feed( "'.$provider.'", "'.$category.'", "'.$limit.'")';
-		
 		$qresult=$this->db->query($sqls);
-		
-    	mysqli_next_result($this->db->conn_id);
-    	
+    	               mysqli_next_result($this->db->conn_id);
 		$db_results = $qresult->result_array();
-		
 		 if (count($db_results) > 0 )
-        {            
-
-        	return $db_results;
-
-        } else {            
-        	 return 'ER';
-        } 
+                            {            
+                            	return $db_results;
+                            } else {            
+                            	return 'ER';
+                            } 
     }
 
     function Rand_Game( $game_id, $limit )

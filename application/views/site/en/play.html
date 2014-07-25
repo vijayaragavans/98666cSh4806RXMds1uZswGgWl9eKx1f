@@ -50,8 +50,14 @@
 						</ul>
 					</div>
 					<div class="entry-content">
-						<p>{$game.game_embed}</p>
-						<p>{$game.game_description}</p>
+							<embed src="{$game.game_url}" height="{$game.game_height}" width="{$game.game_width}" ></embed>
+						<br /><br /><br /> <p>Description: {$game.game_description}</p>
+						<br/><p>Game Played: <span style="font-weight:bold; color:red;">{$game.game_played}</span></p>
+						{if $game.game_ratings > 3}
+							<br/><p>Game Rating: <span style='color:green; font-weight:bold;'>{$game.game_ratings}</span></p>
+						{else}
+							<br/><p>Game Rating: <span style='color:red; font-weight:bold;'>{$game.game_ratings}</span></p>
+						{/if}
 					</div>
 				</article>
 			

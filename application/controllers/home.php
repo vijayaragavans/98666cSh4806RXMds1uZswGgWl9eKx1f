@@ -47,9 +47,7 @@ class Home extends CI_Controller {
 	{
 		
 		$main_game = $this->games_api->Game_Feed('1', 'Sports', 1);
-		
-		$top4_games = $this->games_api->Game_Feed('1', 'Driving', 4);
-		
+		$top4_games = $this->games_api->Game_Feed('1', 'Driving', 4);		
 		$popular_games = $this->games_api->Game_Feed('1', 'Sports', 5);
 		
 		$recent_games = $this->games_api->Game_Feed('1', 'Shooting', 5);
@@ -58,7 +56,7 @@ class Home extends CI_Controller {
 		
 		$casino_games = $this->games_api->Game_Feed('1', 'Fighting', 8);
 		
-		$rand_key = rand(1, 11650);
+		$rand_key = rand(1, 430);
 		
 		$left_game = $this->games_api->Rand_Game($rand_key, 1);
 		

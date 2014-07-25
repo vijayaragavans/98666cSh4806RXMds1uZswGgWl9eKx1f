@@ -40,18 +40,8 @@
 
 						<div id="leaderboard_bridge"></div>
 						<div>
-							{$main_game.game_embed}
+							<embed src="{$main_game.game_url}" height="{$main_game.game_height}" width="{$main_game.game_width}" ></embed>
 						</div>
-						<script src="http://xs.mochiads.com/static/pub/swf/leaderboard.js" type="text/javascript"></script>
-						<script type="text/javascript">
-						// Mochi Bridge
-						var options = {partnerID: "5c948a3e78939abe", id: "leaderboard_bridge"};
-						// optional
-						options.siteName = "Hiiku.com";
-						// optional
-						options.callback = function (params) { alert(params.name + " (" + params.username + ") just scored " + params.score + "!"); }
-						Mochi.addLeaderboardIntegration(options);
-						</script>
 					</div>
 
 				</div>
