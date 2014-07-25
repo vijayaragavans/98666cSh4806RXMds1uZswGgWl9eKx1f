@@ -44,7 +44,6 @@
 | the active record class
 */
 define('TOOL_DB_NAME', 'rightern_hiiku');
-//define('TOOL_DB_NAME', 'rightern_hiiku');
 $active_group = 'default';
 $active_record = TRUE;
 
