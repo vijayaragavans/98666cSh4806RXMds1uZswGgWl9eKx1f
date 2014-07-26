@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.25, created on 2014-01-08 02:30:59
+<?php /* Smarty version 2.6.25, created on 2014-07-26 06:18:48
          compiled from site/en/header.html */ ?>
 <!DOCTYPE  html>
 <html>
@@ -11,13 +11,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="distribution" content="global" />		
 		<meta name="language" content="en" /> 		
-		
+<meta name="google-site-verification" content="VjISa24YNzkFw_ufE9F2o6c3Awm_t-VJgmuZzicRtTk" />		
 		<meta property="og:type" content="article" />			
 		<meta property="article:author" content="Vijayaragavan Sivagurusamy" />			
 		<meta property="article:section" content="" />			
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:creator" content="@vijayaragavans" />
-		<meta property="og:description" content="" />
+		
+		<meta name="txtweb-appkey" content="113e7bc2-9d5f-4148-a178-143d1c248807" />
+		<?php if ($this->_tpl_vars['game']): ?>
+			<meta property="og:type" content="article" />			
+			<meta property="og:image" content="<?php echo $this->_tpl_vars['game']['game_image_url']; ?>
+" />
+			<meta property="og:image:secure_url" content="<?php echo $this->_tpl_vars['game']['game_image_url']; ?>
+" />
+			<meta property="og:title" content="<?php echo $this->_tpl_vars['game']['game_title']; ?>
+" />
+			<meta property="og:description" content="<?php echo $this->_tpl_vars['game']['game_description']; ?>
+" />
+			<meta property="og:site_name" content="hiiku.com" />
+			
+		<?php endif; ?>
 		<meta name="verifyownership" content="7d1481c31ac7abe693dc0c3fc294b690" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<!-- Favicon -->
@@ -83,35 +97,19 @@ game/category/action">Action</a></li>
 						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
 game/category/adventure">Adventure</a></li>
 						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/board-game">Board Game</a></li>
+game/category/multiplayer">Multiplayer</a></li>
 						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/dress-up">Dress Up</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/my-customize">My Customize</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/other">Other</a></li>
+game/category/music">Music & More</a></li>
 						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
 game/category/strategy">Strategy</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/education">Education</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/rhythm">Rhythm</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/jigsaw-puzzles">Jigsaw / Slider Puzzles</a></li>
 					</ul>
 				</li>
 				<li class="dropdown"><a href="#">Special Category</a>
 					<ul class="sub-menu">
 						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/casino">Casino</a></li>
+game/category/shooter">Shooter</a></li>
 						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/driving">Driving</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/fighting">Fighting</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/puzzles">Puzzles</a></li>
-						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
-game/category/shooting">Shooting</a></li>
+game/category/puzzle">Puzzles</a></li>
 						<li><a href="<?php echo $this->_tpl_vars['base_url']; ?>
 game/category/sports">Sports</a></li>
 					</ul>
@@ -128,4 +126,4 @@ home/contact">Contact</a></li>
 			
         </nav><!-- /.navbar -->
 			
-	</header><!-- #masthead -->
+	</header><!-- #masthead -->

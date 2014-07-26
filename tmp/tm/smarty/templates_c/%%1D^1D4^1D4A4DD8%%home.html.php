@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.25, created on 2014-01-09 02:05:39
+<?php /* Smarty version 2.6.25, created on 2014-07-25 18:33:57
          compiled from site/en/home.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'site/en/home.html', 12, false),array('modifier', 'truncate', 'site/en/home.html', 90, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'site/en/home.html', 12, false),array('modifier', 'truncate', 'site/en/home.html', 80, false),)), $this); ?>
 	<div id="headline" class="container">
 	<div class="row-fluid">
 
@@ -41,8 +41,9 @@ game/play/<?php echo $this->_tpl_vars['top_four']['game_id']; ?>
 		<div class="row-fluid">
 		
 		<div class="search span3"><div class="offset1">
-			<form method="get" id="searchform" action="#">
-				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) " onblur="if ( this.value == '' ) " name="s" id="s" />
+			<form method="get" id="searchform" action="<?php echo $this->_tpl_vars['base_url']; ?>
+home/search/">
+				<p><input type="text" placeholder="Search here..." name="key" id="key" />
 				<input type="submit" id="searchsubmit" value="Search" /></p>
 			</form>
 		</div></div>
@@ -58,18 +59,11 @@ game/play/<?php echo $this->_tpl_vars['top_four']['game_id']; ?>
 
 						<div id="leaderboard_bridge"></div>
 						<div>
-							<?php echo $this->_tpl_vars['main_game']['game_embed']; ?>
-
+							<embed src="<?php echo $this->_tpl_vars['main_game']['game_url']; ?>
+" height="<?php echo $this->_tpl_vars['main_game']['game_height']; ?>
+" width="<?php echo $this->_tpl_vars['main_game']['game_width']; ?>
+" ></embed>
 						</div>
-						<script src="http://xs.mochiads.com/static/pub/swf/leaderboard.js" type="text/javascript"></script>
-						<script type="text/javascript">
-						// Mochi Bridge
-						var options = ;
-						// optional
-						options.siteName = "Hiiku.com";
-						// optional
-						options.callback = function (params) 						Mochi.addLeaderboardIntegration(options);
-						</script>
 					</div>
 
 				</div>
@@ -374,4 +368,4 @@ game/play/<?php echo $this->_tpl_vars['education']['game_id']; ?>
 
 		</div><!-- #main -->
 
-		</div><!-- #content -->
+		</div><!-- #content -->

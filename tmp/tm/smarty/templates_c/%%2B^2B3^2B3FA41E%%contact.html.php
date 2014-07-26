@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.25, created on 2014-01-09 01:54:13
+<?php /* Smarty version 2.6.25, created on 2014-07-25 18:44:45
          compiled from site/en/contact.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'site/en/contact.html', 39, false),array('modifier', 'truncate', 'site/en/contact.html', 116, false),)), $this); ?>
@@ -70,8 +70,9 @@ game/play/<?php echo $this->_tpl_vars['top_four']['game_id']; ?>
 		<div class="row-fluid">
 
 		<div class="search span3"><div class="offset1">
-			<form method="get" id="searchform" action="#">
-				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) " onblur="if ( this.value == '' ) " name="s" id="s" />
+			<form method="get" id="searchform" action="<?php echo $this->_tpl_vars['base_url']; ?>
+home/search/">
+				<p><input type="text" placeholder="Search here..." name="key" id="key" />
 				<input type="submit" id="searchsubmit" value="Search" /></p>
 			</form>
 		</div></div>
@@ -222,3 +223,4 @@ game/play/<?php echo $this->_tpl_vars['hot']['game_id']; ?>
 		</div><!-- #main -->
 
 		</div><!-- #content -->
+

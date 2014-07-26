@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.25, created on 2014-01-08 02:31:41
+<?php /* Smarty version 2.6.25, created on 2014-07-25 18:43:14
          compiled from site/en/play.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'site/en/play.html', 13, false),array('modifier', 'truncate', 'site/en/play.html', 79, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'site/en/play.html', 13, false),array('modifier', 'truncate', 'site/en/play.html', 85, false),)), $this); ?>
 
 	<div id="headline" class="container">
 	<div class="row-fluid">
@@ -42,8 +42,9 @@ game/play/<?php echo $this->_tpl_vars['shooting']['game_id']; ?>
 		<div class="row-fluid">
 		
 		<div class="search span3"><div class="offset1">
-			<form method="get" id="searchform" action="#">
-				<p><input type="text" value="Search here..." onfocus="if ( this.value == 'Search here...' ) " onblur="if ( this.value == '' ) " name="s" id="s" />
+			<form method="get" id="searchform" action="<?php echo $this->_tpl_vars['base_url']; ?>
+home/search/">
+				<p><input type="text" placeholder="Search here..." name="key" id="key" />
 				<input type="submit" id="searchsubmit" value="Search" /></p>
 			</form>
 		</div></div>
@@ -64,19 +65,32 @@ game/play/<?php echo $this->_tpl_vars['shooting']['game_id']; ?>
 					</h2>
 					<div class="entry-meta row-fluid">
 						<ul class="clearfix">
-							<li><img src="images/time.png" alt=""><?php echo ((is_array($_tmp=$this->_tpl_vars['game']['game_published_on'])) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp)); ?>
+							<li><img src="<?php echo $this->_tpl_vars['static_server']; ?>
+files/ugc/images/time.png" alt=""><?php echo ((is_array($_tmp=$this->_tpl_vars['game']['game_published_on'])) ? $this->_run_mod_handler('date_format', true, $_tmp) : smarty_modifier_date_format($_tmp)); ?>
 </li>
-							<li><img src="images/view-bg.png" alt=""><?php echo $this->_tpl_vars['game']['game_keyword']; ?>
+							<li><img src="<?php echo $this->_tpl_vars['static_server']; ?>
+files/ugc/images/view-bg.png" alt=""><?php echo $this->_tpl_vars['game']['game_keyword']; ?>
 </li>
 							<li><?php echo $this->_tpl_vars['game']['game_categories']; ?>
 </li>
 						</ul>
 					</div>
 					<div class="entry-content">
-						<p><?php echo $this->_tpl_vars['game']['game_embed']; ?>
+							<embed src="<?php echo $this->_tpl_vars['game']['game_url']; ?>
+" height="<?php echo $this->_tpl_vars['game']['game_height']; ?>
+" width="<?php echo $this->_tpl_vars['game']['game_width']; ?>
+" ></embed>
+						<br /><br /><br /> <p>Description: <?php echo $this->_tpl_vars['game']['game_description']; ?>
 </p>
-						<p><?php echo $this->_tpl_vars['game']['game_description']; ?>
-</p>
+						<br/><p>Game Played: <span style="font-weight:bold; color:red;"><?php echo $this->_tpl_vars['game']['game_played']; ?>
+</span></p>
+						<?php if ($this->_tpl_vars['game']['game_ratings'] > 3): ?>
+							<br/><p>Game Rating: <span style='color:green; font-weight:bold;'><?php echo $this->_tpl_vars['game']['game_ratings']; ?>
+</span></p>
+						<?php else: ?>
+							<br/><p>Game Rating: <span style='color:red; font-weight:bold;'><?php echo $this->_tpl_vars['game']['game_ratings']; ?>
+</span></p>
+						<?php endif; ?>
 					</div>
 				</article>
 			
@@ -86,9 +100,12 @@ game/play/<?php echo $this->_tpl_vars['shooting']['game_id']; ?>
 
 			<div id="tabwidget" class="widget tab-container"> 
 				<ul id="tabnav" class="clearfix"> 
-					<li><h3><a href="#tab1" class="selected"><img src="images/view-white-bg.png" alt="Popular"></a></h3></li>
-					<li><h3><a href="#tab2"><img src="images/time-white.png" alt="Recent"></a></h3></li>
-				    <li><h3><a href="#tab3"><img src="images/komen-putih.png" alt="Comments"></a></h3></li>
+					<li><h3><a href="#tab1" class="selected"><img src="<?php echo $this->_tpl_vars['static_server']; ?>
+files/ugc/images/view-white-bg.png" alt="Popular">Popular</a></h3></li>
+					<li><h3><a href="#tab2"><img src="<?php echo $this->_tpl_vars['static_server']; ?>
+files/ugc/images/time-white.png" alt="Recent">Recent</a></h3></li>
+				    <li><h3><a href="#tab3"><img src="<?php echo $this->_tpl_vars['static_server']; ?>
+files/ugc/images/komen-putih.png" alt="Hot">Hot</a></h3></li>
 				</ul> 
 
 
@@ -190,3 +207,4 @@ game/play/<?php echo $this->_tpl_vars['hot']['game_id']; ?>
 		</div><!-- #main -->
 
 		</div><!-- #content -->
+
